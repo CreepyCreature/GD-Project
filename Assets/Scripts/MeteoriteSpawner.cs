@@ -6,14 +6,43 @@ public class MeteoriteSpawner : MonoBehaviour
 {
     public GameObject meteoritePrefab;
 
+    public float spawnInterval = 3.0f;
+    public bool spawnSingle = false;    
+
     private GameObject _createdInstance;
 
-	// Update is called once per frame
-	void Update ()
+    private void Start()
     {
-		if (_createdInstance == null)
+        if (!spawnSingle)
         {
-            _createdInstance = Instantiate(meteoritePrefab, transform) as GameObject;
+            StartCoroutine(SpawnInteval(spawnInterval));
+        }
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        if (spawnSingle)
+        {
+            SpawnSingle();
         }
 	}
+
+    private IEnumerator SpawnInteval(float interval)
+    {
+        while (true)
+        {
+            Instantiate(meteoritePrefab, transform);
+
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    private void SpawnSingle()
+    {
+        if (_createdInstance == null)
+        {
+            _createdInstance = Instantiate(meteoritePrefab, parent: transform) as GameObject;
+        }
+    }
 }
