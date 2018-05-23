@@ -29,12 +29,14 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        ApplyGravity();
+        //ApplyGravity();
 
         float deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float deltaY = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         Vector3 movement = transform.right * deltaX + transform.up * deltaY;
         _rigidbody.velocity = movement;
+
+        ApplyGravity();
 
         if (!Mathf.Approximately(deltaX, 0.0f))
         {
