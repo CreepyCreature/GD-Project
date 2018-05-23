@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    public float speed = 250.0f;
     public Vector2 pointOfGravity = Vector2.zero;
     public float gravityConstant = 9.8f;
 
@@ -18,8 +17,7 @@ public class Gravity : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         Vector2 gravityDir = pointOfGravity - (Vector2)transform.position;
         _rigidbody.AddForce(
