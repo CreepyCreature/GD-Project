@@ -63,8 +63,9 @@ public class PlayerController : MonoBehaviour
     {
         float rayLength = 0.4f;
         Debug.DrawRay(transform.position, -transform.up * rayLength, Color.red);
+        int layerMask = 1 << 9; // 9 = Player layer
         RaycastHit2D hit =
-            Physics2D.Raycast(transform.position, -transform.up, rayLength);
+            Physics2D.Raycast(transform.position, -transform.up, rayLength, ~layerMask);
         _grounded = hit.collider == null ? false : true;
     }
 
