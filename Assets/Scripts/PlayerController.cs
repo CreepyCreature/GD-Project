@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(deltaX), 1.0f, 1.0f);
         }
 
-        CheckIfGrounded();        
+        CheckIfGrounded();  
         UpdateAnimator(deltaX);
 	}
 
