@@ -86,4 +86,9 @@ public class ResourceManager : MonoBehaviour, IGameManager
     {
         return Mathf.Approximately(oxygen, 1.0f);
     }
+
+    public bool ShipRepairsMaxed()
+    {
+        return Mathf.Approximately(shipRepairs, 1.0f);
+    }
 }
