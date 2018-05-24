@@ -19,7 +19,7 @@ public class ResourceManager : MonoBehaviour, IGameManager
                 _oxygen = 0.0f;
 
             // (see http://wiki.unity3d.com/index.php?title=CSharpMessenger_Extended)
-            Messenger.Broadcast(GameEvent.OXYGEN_CHANGED);
+            Messenger.Broadcast(GameEvent.OXYGEN_CHANGED, MessengerMode.DONT_REQUIRE_LISTENER);
         }
     }
 
@@ -36,14 +36,14 @@ public class ResourceManager : MonoBehaviour, IGameManager
                 _minerals = 0.0f;
 
             // (see http://wiki.unity3d.com/index.php?title=CSharpMessenger_Extended)
-            Messenger.Broadcast(GameEvent.MINERALS_CHANGED);
+            Messenger.Broadcast(GameEvent.MINERALS_CHANGED, MessengerMode.DONT_REQUIRE_LISTENER);
         }
     }
 
     public void Initialize()
     {
         status = ManagerStatus.Initializing;
-
+        
         oxygen = 1.0f;
         minerals = 0.0f;
 

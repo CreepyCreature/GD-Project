@@ -21,6 +21,8 @@
 // ...
 // Messenger<float>.Broadcast<string>("myEvent", 1.0f, MyEventCallback);
 // private void MyEventCallback(string s1) { Debug.Log(s1"); }
+//
+// If preferred, change DEFAULT_MODE to not require listeners.
 
 using System;
 using System.Collections.Generic;
@@ -35,7 +37,7 @@ public enum MessengerMode
 static internal class MessengerInternal
 {
     readonly public static Dictionary<string, Delegate> eventTable = new Dictionary<string, Delegate>();
-    static public readonly MessengerMode DEFAULT_MODE = MessengerMode.REQUIRE_LISTENER;
+    static public MessengerMode DEFAULT_MODE = MessengerMode.REQUIRE_LISTENER;
 
     static public void AddListener(string eventType, Delegate callback)
     {
@@ -64,7 +66,7 @@ static internal class MessengerInternal
                 throw MessengerInternal.CreateBroadcastSignatureException(eventType);
             }
         }
-        return null;
+        return new T[0];
     }
 
     static public void OnListenerAdding(string eventType, Delegate listenerBeingAdded)

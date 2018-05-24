@@ -20,6 +20,12 @@ public class UIController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.MINERALS_CHANGED, OnMineralsChanged);
     }
 
+    private void Start()
+    {
+        OnOxygenChanged();
+        OnMineralsChanged();
+    }
+
     private void OnOxygenChanged()
     {
         oxygenLabel.text = "Oxygen Supply: " 
