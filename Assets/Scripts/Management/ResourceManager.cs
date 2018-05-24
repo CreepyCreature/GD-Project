@@ -40,12 +40,29 @@ public class ResourceManager : MonoBehaviour, IGameManager
         }
     }
 
+    private float _shipRepairs;
+    public float shipRepairs
+    {
+        get { return _shipRepairs; }
+        set
+        {
+            _shipRepairs = value;
+            if (_shipRepairs > 1.0f)
+                _shipRepairs = 1.0f;
+            else if (_shipRepairs < 0.0f)
+                _shipRepairs = 0.0f;
+
+            Messenger.Broadcast(GameEvent.SHIP_REPAIR_PROGRESS_CHANGED, MessengerMode.DONT_REQUIRE_LISTENER);
+        }
+    }
+
     public void Initialize()
     {
         status = ManagerStatus.Initializing;
         
         oxygen = 1.0f;
         minerals = 0.0f;
+        shipRepairs = 0.0f;
 
         status = ManagerStatus.Ready;
     }
@@ -58,5 +75,15 @@ public class ResourceManager : MonoBehaviour, IGameManager
     public void AdjustMinerals(float amount)
     {
         minerals += amount;
+    }
+
+    public bool MineralsMaxed()
+    {
+        return Mathf.Approximately(minerals, 1.0f);
+    }
+
+    public bool OxygenMaxed()
+    {
+        return Mathf.Approximately(oxygen, 1.0f);
     }
 }

@@ -7,23 +7,27 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private Text oxygenLabel;
     [SerializeField] private Text mineralsLabel;
+    [SerializeField] private Text shipLabel;
 
     private void Awake()
     {
         Messenger.AddListener(GameEvent.OXYGEN_CHANGED, OnOxygenChanged);
         Messenger.AddListener(GameEvent.MINERALS_CHANGED, OnMineralsChanged);
+        Messenger.AddListener(GameEvent.SHIP_REPAIR_PROGRESS_CHANGED, OnShipRepairProgressChanged);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.OXYGEN_CHANGED, OnOxygenChanged);
         Messenger.RemoveListener(GameEvent.MINERALS_CHANGED, OnMineralsChanged);
+        Messenger.RemoveListener(GameEvent.SHIP_REPAIR_PROGRESS_CHANGED, OnShipRepairProgressChanged);
     }
 
     private void Start()
     {
         OnOxygenChanged();
         OnMineralsChanged();
+        OnShipRepairProgressChanged();
     }
 
     private void OnOxygenChanged()
@@ -37,6 +41,13 @@ public class UIController : MonoBehaviour
     {
         mineralsLabel.text = "Mineral Supply: "
             + Mathf.RoundToInt(Managers.PlayerResources.minerals * 100)
+            + "%";
+    }
+
+    private void OnShipRepairProgressChanged()
+    {
+        shipLabel.text = "Ship Status: "
+            + Mathf.RoundToInt(Managers.PlayerResources.shipRepairs * 100)
             + "%";
     }
 }
