@@ -1031,7 +1031,7 @@ MonoBehaviour:
   repairParticlePrefab: {fileID: 114031795927871824, guid: 350bf09face33084487dcd5f512b4fd8,
     type: 2}
   radius: 1
-  repairSpeed: 0.1
+  repairSpeed: 0.2
 --- !u!114 &1954670995
 MonoBehaviour:
   m_ObjectHideFlags: 0
