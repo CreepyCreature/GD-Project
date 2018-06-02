@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
 
         CheckIfGrounded();  
-        UpdateAnimator(deltaX);
+        UpdateAnimator(deltaX, _grounded);
 	}
 
     private void ApplyGravity()
@@ -70,8 +70,9 @@ public class PlayerController : MonoBehaviour
         _grounded = hit.collider == null ? false : true;
     }
 
-    private void UpdateAnimator(float deltaX)
+    private void UpdateAnimator(float deltaX, bool grounded)
     {
         _animator.SetFloat("speedX", _grounded ? Mathf.Abs(deltaX) : 0.0f);
+        _animator.SetBool("grounded",_grounded);
     }
 }
