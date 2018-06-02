@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meteorite
   - Ship
+  - NonPhysical
   layers:
   - Default
   - TransparentFX

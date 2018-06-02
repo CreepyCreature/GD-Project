@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShipRepairer : MonoBehaviour
 {
+    public MineralParticle repairParticlePrefab;
+
     public float radius = 1.0f;
 
     [Range(0, 1)]
@@ -35,6 +37,10 @@ public class ShipRepairer : MonoBehaviour
         {
             Managers.PlayerResources.minerals -= amount;
             Managers.PlayerResources.shipRepairs += amount / 2.0f;
+
+            MineralParticle repairParticle = Instantiate(repairParticlePrefab,
+                                                transform.position, Quaternion.identity);
+            repairParticle.MoveTowards(hit.transform);
         }
         else
         {

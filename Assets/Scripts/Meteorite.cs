@@ -20,6 +20,8 @@ public class Meteorite : MonoBehaviour
 
         GetComponent<Rigidbody2D>().velocity = initialVelocity;
         transform.localScale = transform.localScale * initialScale;
+
+        Destroy(gameObject, 30.0f);
     }
 
     public float Mine(float speed)

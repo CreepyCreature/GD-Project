@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class LaserParticle : MonoBehaviour
 {
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    private float timeToLive = 5.0f;
+
+	void Start()
     {
-        Destroy(gameObject, 5.0f);
+        Destroy(gameObject, timeToLive);
 	}
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Meteorite"))
         {
             Destroy(collision.gameObject);
+        }
+        if (!collision.CompareTag("Player") &&
+            !collision.CompareTag("NonPhysical"))
+        {
             gameObject.SetActive(false);
         }
     }

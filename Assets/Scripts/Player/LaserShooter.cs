@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LaserShooter : MonoBehaviour
 {
-    public GameObject particlePrefab;
+    public Rigidbody2D particlePrefab;
+
+    public float speed = 1.0f;
 
     private Rigidbody2D _rigidbody;
 
@@ -23,8 +25,14 @@ public class LaserShooter : MonoBehaviour
             Vector3 spawnDir = mouseWorldPos - transform.position;
             Vector3 spawnPos = transform.position + spawnDir.normalized;
 
-            GameObject particle = Instantiate(particlePrefab, spawnPos, Quaternion.identity);
-            particle.GetComponent<Rigidbody2D>().velocity = (Vector2)spawnDir + _rigidbody.velocity;
+            Rigidbody2D particle = Instantiate(particlePrefab, spawnPos, Quaternion.identity);
+            //particle.GetComponent<Rigidbody2D>().velocity = (Vector2)spawnDir + _rigidbody.velocity;
+            particle.velocity = spawnDir * speed;
+
+            if (Vector3.Dot(_rigidbody.velocity.normalized, spawnDir) >= 0.0f)
+            {
+                particle.velocity += _rigidbody.velocity;
+            }
         }
 	}
 }

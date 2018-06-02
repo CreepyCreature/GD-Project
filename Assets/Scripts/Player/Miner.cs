@@ -7,6 +7,8 @@ public class Miner : MonoBehaviour
 {
     public float radius = 2.0f;
     public float speed = 1.0f;
+
+    public MineralParticle mineralParticlePrefab;
 	
 	void FixedUpdate ()
     {
@@ -30,6 +32,11 @@ public class Miner : MonoBehaviour
                 meteoriteCollider.transform.position - transform.position,
                 Color.red, 1.0f);
 
+            var mineralParticle = Instantiate(mineralParticlePrefab, 
+                meteoriteCollider.transform.position,
+                Quaternion.identity);
+            mineralParticle.MoveTowards(transform);
+            
             Meteorite meteorite = meteoriteCollider.GetComponent<Meteorite>();
             Managers.PlayerResources.minerals += meteorite.Mine(speed);
 

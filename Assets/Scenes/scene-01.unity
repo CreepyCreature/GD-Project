@@ -221,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601398235}
   - component: {fileID: 601398236}
+  - component: {fileID: 601398237}
   m_Layer: 0
   m_Name: MeteoriteSpawner
   m_TagString: Untagged
@@ -235,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601398234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -252,10 +253,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04442ec5cb44234dab07137b0abf9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteoritePrefab: {fileID: 1093865112863058, guid: cf7ca16daf8c3c04fba637901f410b16,
+  meteoritePrefab: {fileID: 1639479719183304, guid: cf7ca16daf8c3c04fba637901f410b16,
     type: 2}
   spawnInterval: 5
   spawnSingle: 0
+--- !u!212 &601398237
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601398234}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e312e6de2aa34e44e9596721cc6146c3, type: 3}
+  m_Color: {r: 0.9191176, g: 0.14868078, b: 0.89786434, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &744998588
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,8 +1013,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510d0a6a3324bfb4aa00a2990dbe8531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 5
   speed: 2
+  mineralParticlePrefab: {fileID: 114031795927871824, guid: 350bf09face33084487dcd5f512b4fd8,
+    type: 2}
 --- !u!114 &1954670994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,6 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657eac2af82493941aaf2dc727dcbe9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repairParticlePrefab: {fileID: 114031795927871824, guid: 350bf09face33084487dcd5f512b4fd8,
+    type: 2}
   radius: 1
   repairSpeed: 0.1
 --- !u!114 &1954670995
@@ -994,8 +1043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fdef1bf4a84b1458fb4d4205b72e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 1263709481174030, guid: 6d2e64b96e0704e4f8313d3d3c74c79d,
+  particlePrefab: {fileID: 50101449839577624, guid: 6d2e64b96e0704e4f8313d3d3c74c79d,
     type: 2}
+  speed: 1
 --- !u!58 &1954670996
 CircleCollider2D:
   m_ObjectHideFlags: 0
