@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Miner : MonoBehaviour
 {
     public float radius = 2.0f;
+    public float speed = 1.0f;
 	
 	void FixedUpdate ()
     {
@@ -20,13 +22,18 @@ public class Miner : MonoBehaviour
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, radius,
             LayerMask.GetMask("Mineable"));
 
-        foreach (Collider2D collider in hit)
+        Collider2D meteoriteCollider = Array.Find(hit, p => p.CompareTag("Meteorite"));
+
+        if (meteoriteCollider != null)
         {
-            Debug.DrawRay(transform.position, 
-                collider.transform.position - transform.position, 
+            Debug.DrawRay(transform.position,
+                meteoriteCollider.transform.position - transform.position,
                 Color.red, 1.0f);
 
-            Managers.PlayerResources.minerals += 0.1f * Time.deltaTime;
+            Meteorite meteorite = meteoriteCollider.GetComponent<Meteorite>();
+            Managers.PlayerResources.minerals += meteorite.Mine(speed);
+
+            //Managers.PlayerResources.minerals += 0.1f * Time.deltaTime;
         }
     }
 }

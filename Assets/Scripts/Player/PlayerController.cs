@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody.velocity = movement;
 
         ApplyGravity();
+        CorrectOrientation();
 
         if (!Mathf.Approximately(deltaX, 0.0f))
         {
@@ -52,8 +53,6 @@ public class PlayerController : MonoBehaviour
         Vector2 gravityDir = pointOfGravity - position2D;
         _rigidbody.AddForce(
             gravityDir.normalized * gravityConstant * 100.0f / gravityDir.sqrMagnitude);
-
-        CorrectOrientation();
     }
 
     private void CorrectOrientation()

@@ -969,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
+  speed: 2
 --- !u!114 &1954670994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ MonoBehaviour:
 
     E - Mine Meteorites
 
-    R - Repair Ship'
+    E - Repair Ship'
 --- !u!222 &2052783190
 CanvasRenderer:
   m_ObjectHideFlags: 0

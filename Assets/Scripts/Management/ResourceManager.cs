@@ -20,6 +20,11 @@ public class ResourceManager : MonoBehaviour, IGameManager
 
             // (see http://wiki.unity3d.com/index.php?title=CSharpMessenger_Extended)
             Messenger.Broadcast(GameEvent.OXYGEN_CHANGED, MessengerMode.DONT_REQUIRE_LISTENER);
+
+            if (oxygen <= 0.0f)
+            {
+                Messenger.Broadcast(GameEvent.PLAYER_LOSE, MessengerMode.DONT_REQUIRE_LISTENER);
+            }
         }
     }
 
@@ -53,6 +58,11 @@ public class ResourceManager : MonoBehaviour, IGameManager
                 _shipRepairs = 0.0f;
 
             Messenger.Broadcast(GameEvent.SHIP_REPAIR_PROGRESS_CHANGED, MessengerMode.DONT_REQUIRE_LISTENER);
+
+            if (Mathf.Approximately(_shipRepairs, 1.0f))
+            {
+                Messenger.Broadcast(GameEvent.PLAYER_WIN, MessengerMode.DONT_REQUIRE_LISTENER);
+            }
         }
     }
 

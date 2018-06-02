@@ -11,7 +11,7 @@ public class ShipRepairer : MonoBehaviour
 
 	void Update ()
     {
-		if (Input.GetKey(KeyCode.R) &&
+		if (Input.GetButton("Repair Ship") &&
             !Managers.PlayerResources.ShipRepairsMaxed())
         {
             RepairShip();
