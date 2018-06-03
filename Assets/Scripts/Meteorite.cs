@@ -40,6 +40,12 @@ public class Meteorite : MonoBehaviour
     {
         Debug.Log("Meteorite hit " + collision.gameObject);
 
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            Managers.PlayerResources.shipRepairs -= 0.1f * _scale;
+            Debug.Log("Meteorite damaged ship for " + 0.1f * _scale + " damage!");
+        }
+
         if (!collision.gameObject.CompareTag("Meteorite") &&
             !collision.gameObject.CompareTag("Player"))
         {
