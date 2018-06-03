@@ -9,6 +9,9 @@ public class Meteorite : MonoBehaviour
     [SerializeField]
     private float baseDamage = 0.1f;
 
+    [SerializeField]
+    private AudioClip hitSound;
+
     private float _minerals = 0.1f;
     private float _scale = 1.0f;
 
@@ -54,6 +57,8 @@ public class Meteorite : MonoBehaviour
         if (!collision.gameObject.CompareTag("Meteorite") &&
             !collision.gameObject.CompareTag("Player"))
         {
+            Managers.Audio.PlaySFX(hitSound);
+
             Destroy(gameObject);
         }
     }
