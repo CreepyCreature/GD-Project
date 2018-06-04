@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 250.0f;
     public Vector2 pointOfGravity = Vector2.zero;
     public float gravityConstant = 9.8f;
-    public bool goingRight = true;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -20,19 +19,11 @@ public class PlayerController : MonoBehaviour
         get { return transform.position; }
     }
 
-    protected float _deltaX;
-    public float deltaX
-    {
-        get { return _deltaX; }
-        set { _deltaX = value; }
-    }
-
 	// Use this for initialization
 	void Start ()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        goingRight = true;
 	}
 	
 	// Update is called once per frame
@@ -51,14 +42,6 @@ public class PlayerController : MonoBehaviour
         if (!Mathf.Approximately(deltaX, 0.0f))
         {
             transform.localScale = new Vector3(Mathf.Sign(deltaX), 1.0f, 1.0f);
-            if(transform.localScale.x == 1)
-            {
-                goingRight = true;
-            }
-            else
-            {
-                goingRight = false;
-            }
         }
 
         CheckIfGrounded();  
@@ -75,7 +58,6 @@ public class PlayerController : MonoBehaviour
     private void CorrectOrientation()
     {
         transform.up = (position2D - pointOfGravity).normalized;
-       
     }
 
     private void CheckIfGrounded()
