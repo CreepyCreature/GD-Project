@@ -35,7 +35,6 @@ public class MineralParticle : MonoBehaviour
             distance = Vector2.Distance(transform.position, _targetTransform.position);
             if (Mathf.Approximately(distance, 0.0f))
             {
-                Debug.Log("here");
                 Destroy(gameObject);
             }
 

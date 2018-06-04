@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class Meteorite : MonoBehaviour
 {
+    [SerializeField]
+    private float baseDamage = 0.1f;
+
+    [SerializeField]
+    private AudioClip hitSound;
+
     private float _minerals = 0.1f;
     private float _scale = 1.0f;
 
@@ -40,9 +46,19 @@ public class Meteorite : MonoBehaviour
     {
         Debug.Log("Meteorite hit " + collision.gameObject);
 
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            Managers.PlayerResources.shipRepairs -= baseDamage * _scale;
+            Debug.Log("Meteorite damaged ship for " 
+                + baseDamage * _scale + " (" + baseDamage * _scale * 100 + "%) "
+                + " damage!");
+        }
+
         if (!collision.gameObject.CompareTag("Meteorite") &&
             !collision.gameObject.CompareTag("Player"))
         {
+            Managers.Audio.PlaySFX(hitSound);
+
             Destroy(gameObject);
         }
     }
