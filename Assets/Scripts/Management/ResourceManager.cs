@@ -72,7 +72,7 @@ public class ResourceManager : MonoBehaviour, IGameManager
         
         oxygen = 1.0f;
         minerals = 0.0f;
-        shipRepairs = 0.0f;
+        shipRepairs = 0.1f;
 
         status = ManagerStatus.Ready;
     }
