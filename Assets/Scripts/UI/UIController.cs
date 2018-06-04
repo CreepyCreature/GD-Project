@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private Text oxygenLabel;
-    [SerializeField] private Text mineralsLabel;
-    [SerializeField] private Text shipLabel;
+    [SerializeField] private TextMeshProUGUI oxygenLabel;
+    [SerializeField] private TextMeshProUGUI mineralsLabel;
+    [SerializeField] private TextMeshProUGUI shipLabel;
 
     private void Awake()
     {
