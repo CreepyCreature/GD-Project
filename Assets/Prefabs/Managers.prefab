@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 114463884135372030}
   - component: {fileID: 114140440639465196}
   - component: {fileID: 114921634154980128}
+  - component: {fileID: 114293484357374004}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -303,6 +304,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9094adba81590e4a9b818508168011a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenCriticalTreshold: 0.2
+--- !u!114 &114293484357374004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736701225831326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d8d4e3e3ad6ba4ab000779e3296e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danger1Clip: {fileID: 8300000, guid: dca5761ccda36c148a783758ba365764, type: 3}
+  danger2Clip: {fileID: 8300000, guid: 08ca156fb40bd2a4b998ccb91c7de946, type: 3}
 --- !u!114 &114463884135372030
 MonoBehaviour:
   m_ObjectHideFlags: 1

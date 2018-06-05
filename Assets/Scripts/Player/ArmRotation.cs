@@ -12,7 +12,7 @@ public class ArmRotation : MonoBehaviour {
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
-        Debug.Log(Player.deltaX);
+        //Debug.Log(Player.deltaX);
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         if(Player.goingRight)
         {

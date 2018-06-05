@@ -6,6 +6,9 @@ public class ResourceManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
+    [SerializeField]
+    private float oxygenCriticalTreshold = 0.25f;
+    private bool _oxygenCritical = false;
     private float _oxygen;
     public float oxygen
     {
@@ -24,6 +27,17 @@ public class ResourceManager : MonoBehaviour, IGameManager
             if (oxygen <= 0.0f)
             {
                 Messenger.Broadcast(GameEvent.PLAYER_LOSE, MessengerMode.DONT_REQUIRE_LISTENER);
+                Messenger.Broadcast(GameEvent.OXYGEN_DEPLETED, MessengerMode.DONT_REQUIRE_LISTENER);
+            }
+            else if (oxygen < oxygenCriticalTreshold && !_oxygenCritical)
+            {
+                Debug.Log("ResourceManager::O2Critical!");
+                Messenger.Broadcast(GameEvent.OXYGEN_CRITICAL, MessengerMode.DONT_REQUIRE_LISTENER);
+                _oxygenCritical = true;
+            }
+            else if (oxygen >= oxygenCriticalTreshold)
+            {
+                _oxygenCritical = false;
             }
         }
     }
@@ -100,5 +114,17 @@ public class ResourceManager : MonoBehaviour, IGameManager
     public bool ShipRepairsMaxed()
     {
         return Mathf.Approximately(shipRepairs, 1.0f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            oxygen -= 0.1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            oxygen += 0.1f;
+        }
     }
 }

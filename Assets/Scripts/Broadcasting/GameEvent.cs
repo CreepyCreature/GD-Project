@@ -9,4 +9,6 @@ public static class GameEvent
     public const string SHIP_REPAIR_PROGRESS_CHANGED = "SHIP_REPAIR_PROGRESS_CHANGED";
     public const string PLAYER_WIN = "PLAYER_WIN";
     public const string PLAYER_LOSE = "PLAYER_LOSE";
+    public const string OXYGEN_CRITICAL = "OXYGEN_CRITICAL";
+    public const string OXYGEN_DEPLETED = "OXYGEN_DEPLETED";
 }
