@@ -6,6 +6,10 @@ public class MineralParticle : MonoBehaviour
 {
     [SerializeField]
     private float speed = 1.0f;
+    [SerializeField]
+    private List<Sprite> particleSprites;
+    [SerializeField]
+    private SpriteRenderer particleRenderer;
 
     private Transform _targetTransform;
     private Vector2 _startPos;
@@ -13,7 +17,13 @@ public class MineralParticle : MonoBehaviour
     private float _totalDistance;
 
     private bool _started = false;
-    
+
+    private void Awake()
+    {
+       int rand = Random.Range(0, 9);
+        particleRenderer.sprite = particleSprites[rand];
+    }
+
     public void MoveTowards(Transform target)
     {
         _targetTransform = target;
