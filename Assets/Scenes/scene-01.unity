@@ -796,9 +796,9 @@ GameObject:
   - component: {fileID: 825026842}
   - component: {fileID: 825026841}
   - component: {fileID: 825026843}
+  - component: {fileID: 825026844}
   - component: {fileID: 825026840}
   - component: {fileID: 825026839}
-  - component: {fileID: 825026844}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -894,6 +894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954670990}
+  smoothOut: 1
+  smoothTime: 0.2
 --- !u!1 &857587870
 GameObject:
   m_ObjectHideFlags: 0
