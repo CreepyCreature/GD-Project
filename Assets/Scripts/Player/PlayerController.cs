@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = transform.right * deltaX + transform.up * deltaY;
         _rigidbody.velocity = movement;
 
+        //MouseMovement();
+
         ApplyGravity();
         CorrectOrientation();
 
@@ -61,9 +63,28 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        CheckIfGrounded();  
-        UpdateAnimator(deltaX, _grounded);
-	}
+        CheckIfGrounded();
+        UpdateAnimator(_rigidbody.velocity.magnitude, _grounded);
+        //UpdateAnimator(deltaX, _grounded);
+    }
+
+    private void MouseMovement()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.DrawLine(transform.position, mouseWorldPos, Color.green);
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            Vector3 moveDirection = Vector3.Normalize(mouseWorldPos - transform.position);
+            _rigidbody.velocity = _rigidbody.velocity + 
+                (Vector2)(moveDirection * speed * 2 * Time.deltaTime);
+
+            Debug.Log(Vector3.Dot(transform.right, moveDirection));
+            float scaleX = Vector3.Dot(transform.right, moveDirection) > 0.0f ? 1.0f : -1.0f;
+            Debug.Log(scaleX);
+            transform.localEulerAngles = new Vector3(scaleX, 1.0f, 1.0f);
+        }
+    }
 
     private void ApplyGravity()
     {

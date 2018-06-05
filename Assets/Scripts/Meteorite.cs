@@ -18,9 +18,9 @@ public class Meteorite : MonoBehaviour
     private void Start()
     {
         Vector3 initialVelocity = new Vector3(
-            Random.Range(-2, 2), Random.Range(-2, 0), 0.0f);
+            Random.Range(-2, 2), Random.Range(-3, 0), 0.0f);
 
-        float initialScale = Random.Range(2, 4);
+        float initialScale = Random.Range(1, 5);
         _scale = initialScale;
         _minerals *= initialScale;
 

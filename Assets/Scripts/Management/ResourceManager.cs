@@ -126,5 +126,14 @@ public class ResourceManager : MonoBehaviour, IGameManager
         {
             oxygen += 0.1f;
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            minerals -= 0.1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            minerals += 0.1f;
+        }
     }
 }

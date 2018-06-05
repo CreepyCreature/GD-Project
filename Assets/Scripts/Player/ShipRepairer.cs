@@ -16,9 +16,42 @@ public class ShipRepairer : MonoBehaviour
 		if (Input.GetButton("Repair Ship") &&
             !Managers.PlayerResources.ShipRepairsMaxed())
         {
-            RepairShip();
+            //RepairShip();
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            MouseRepairShip();
         }
 	}
+
+    private void MouseRepairShip()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.DrawLine(transform.position, mouseWorldPos, Color.yellow);
+
+        if (Vector2.Distance(mouseWorldPos, transform.position) < radius)
+        {
+            Collider2D shipCollider = Physics2D.OverlapPoint(mouseWorldPos,
+                LayerMask.GetMask("Ship"));
+            if (shipCollider == null)
+            {
+                return;
+            }
+
+            float amount = repairSpeed * Time.deltaTime;
+            if (Managers.PlayerResources.minerals >= amount)
+            {
+                Debug.Log("Repairing ship..");
+
+                Managers.PlayerResources.minerals -= amount;
+                Managers.PlayerResources.shipRepairs += amount / 2.0f;
+
+                MineralParticle repairParticle = Instantiate(repairParticlePrefab,
+                    transform.position, Quaternion.identity);
+                repairParticle.MoveTowards(shipCollider.transform);
+            }
+        }
+    }
 
     private void RepairShip()
     {

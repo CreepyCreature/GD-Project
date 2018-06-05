@@ -15,9 +15,41 @@ public class Miner : MonoBehaviour
 		if (Input.GetButton("Mine Minerals") &&
             !Managers.PlayerResources.MineralsMaxed())
         {
-            MineMinerals();
+            //MineMinerals();
+        }
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            MouseMineMinerals();
         }
 	}
+
+    private void MouseMineMinerals()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.DrawLine(transform.position, mouseWorldPos, Color.yellow);
+
+        if (Vector2.Distance(mouseWorldPos, transform.position) < radius)
+        {
+            Collider2D meteoriteCollider = Physics2D.OverlapPoint(mouseWorldPos, 
+                LayerMask.GetMask("Mineable"));
+
+            if (meteoriteCollider != null)
+            {
+                Debug.DrawRay(transform.position,
+                    meteoriteCollider.transform.position - transform.position,
+                    Color.red, 1.0f);
+
+                var mineralParticle = Instantiate(mineralParticlePrefab,
+                    meteoriteCollider.transform.position,
+                    Quaternion.identity);
+                mineralParticle.MoveTowards(transform);
+
+                Meteorite meteorite = meteoriteCollider.GetComponent<Meteorite>();
+                Managers.PlayerResources.minerals += meteorite.Mine(speed);
+            }
+        }
+    }
 
     private void MineMinerals()
     {
