@@ -888,14 +888,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825026838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b06faad4338cd024bb87619970d3d251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1954670990}
   smoothOut: 1
-  smoothTime: 0.2
+  smoothTime: 0.066
 --- !u!1 &857587870
 GameObject:
   m_ObjectHideFlags: 0

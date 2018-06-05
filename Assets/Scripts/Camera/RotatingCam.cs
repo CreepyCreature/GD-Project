@@ -16,7 +16,7 @@ public class RotatingCam : MonoBehaviour
     {
         if (smoothOut)
         {
-            NonVomitingRotation();
+            QuatRotation();
         }
         else
         {
@@ -34,7 +34,17 @@ public class RotatingCam : MonoBehaviour
         Vector3 targetRotation = new Vector3(
             transform.localEulerAngles.x, transform.localEulerAngles.y, target.localEulerAngles.z);
 
-        transform.localEulerAngles = Vector3.SmoothDamp(transform.localEulerAngles,
-            targetRotation, ref _velocity, smoothTime);
+        //transform.localEulerAngles = Vector3.SmoothDamp(transform.localEulerAngles,
+        //    targetRotation, ref _velocity, smoothTime);
+        transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles,
+            targetRotation, Time.time * smoothTime);
+    }
+
+    private void QuatRotation()
+    {        
+        Quaternion targetRotation = target.rotation;
+        Quaternion smoothedRotation = Quaternion.Slerp(transform.rotation, 
+            target.rotation, smoothTime);
+        transform.rotation = smoothedRotation;
     }
 }
