@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(TMPro.TMP_Text))]
 
 public class Toast : MonoBehaviour
 {
     public float duration = 5.0f;
     public float fadeTime = 1.0f;
 
-    private Text _text;
+    private TMPro.TMP_Text _text;
 
 	// Use this for initialization
 	void Start ()
     {
-        _text = GetComponent<Text>();
+        _text = GetComponent<TMPro.TMP_Text>();
 
         StartCoroutine(DoTheThing());
 	}
