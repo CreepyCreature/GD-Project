@@ -648,48 +648,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.3}
   m_EdgeRadius: 0
---- !u!1001 &684747531
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4733939696393152, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 350bf09face33084487dcd5f512b4fd8, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &765649790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,6 +2029,7 @@ MonoBehaviour:
   speed: 2
   mineralParticlePrefab: {fileID: 114031795927871824, guid: 350bf09face33084487dcd5f512b4fd8,
     type: 2}
+  sfxClip: {fileID: 8300000, guid: e62f7e44a48703e46b561b8271ce58d0, type: 3}
 --- !u!114 &1954670994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,6 +2059,7 @@ MonoBehaviour:
   particlePrefab: {fileID: 50101449839577624, guid: 6d2e64b96e0704e4f8313d3d3c74c79d,
     type: 2}
   speed: 1
+  sfxClip: {fileID: 8300000, guid: 3dbcd1f8996039a4281a5544a4211f4d, type: 3}
 --- !u!58 &1954670996
 CircleCollider2D:
   m_ObjectHideFlags: 0

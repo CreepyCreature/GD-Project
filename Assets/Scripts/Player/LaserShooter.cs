@@ -8,6 +8,8 @@ public class LaserShooter : MonoBehaviour
 
     public float speed = 1.0f;
 
+    public AudioClip sfxClip;
+
     private Rigidbody2D _rigidbody;
 
     private void Start()
@@ -28,6 +30,8 @@ public class LaserShooter : MonoBehaviour
             Rigidbody2D particle = Instantiate(particlePrefab, spawnPos, Quaternion.identity);
             //particle.GetComponent<Rigidbody2D>().velocity = (Vector2)spawnDir + _rigidbody.velocity;
             particle.velocity = spawnDir * speed;
+
+            Managers.Audio.PlaySFX(sfxClip);
 
             if (Vector3.Dot(_rigidbody.velocity.normalized, spawnDir) >= 0.0f)
             {
