@@ -61,7 +61,29 @@ public class AudioManager : MonoBehaviour, IGameManager
             }
         }
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            musicMute = !musicMute;
+            sfxMute = !sfxMute;
+        }
+        if (Input.GetKeyDown(KeyCode.Comma))
+        {
+            musicVolume -= 0.1f;
+            sfxVolume -= 0.1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.Period))
+        {
+            if (musicVolume < 1.0f && sfxVolume < 1.0f)
+            {
+                musicVolume += 0.1f;
+                sfxVolume += 0.1f;
+            }
+        }
+    }
+
     public void Initialize()
     {
         status = ManagerStatus.Initializing;
